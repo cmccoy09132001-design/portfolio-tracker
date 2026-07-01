@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #14181A;
+  --surface: #1C2124;
+  --surface-raised: #232930;
+  --border: #2C3338;
+  --text-primary: #ECEEEF;
+  --text-secondary: #9CA5AB;
+  --text-muted: #6B7378;
+  --accent: #5B8FD4;
+  --gain: #5FB890;
+  --loss: #E0716A;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.25rem;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.market-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-bottom: 0;
+}
+
+.market-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.market-badge.open .market-dot {
+  background: var(--gain);
+  box-shadow: 0 0 6px var(--gain);
+}
+
+.market-badge.closed .market-dot {
+  background: var(--text-muted);
+}
+
+.market-badge.open {
+  color: var(--gain);
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 2.75rem 0 1rem;
+}
+
+p { color: var(--text-secondary); margin: 0.4rem 0; }
+
+.form-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  margin: 0 12px 0 0;
+}
+
+/* ---------- Form ---------- */
+
+form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 2rem;
+}
+
+input {
+  flex: 1;
+  min-width: 110px;
+  padding: 9px 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.15s ease;
+}
+
+input::placeholder { color: var(--text-muted); }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+input[type="date"] {
+  color-scheme: dark;
+  color: var(--text-muted);
+}
+
+input[type="date"][data-has-value="true"],
+input[type="date"]:focus {
+  color: var(--text-primary);
+}
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: var(--text-muted);
+}
+
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit,
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit-text,
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit-month-field,
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit-day-field,
+input[type="date"][data-has-value="true"]::-webkit-datetime-edit-year-field,
+input[type="date"]:focus::-webkit-datetime-edit,
+input[type="date"]:focus::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]:focus::-webkit-datetime-edit-text,
+input[type="date"]:focus::-webkit-datetime-edit-month-field,
+input[type="date"]:focus::-webkit-datetime-edit-day-field,
+input[type="date"]:focus::-webkit-datetime-edit-year-field {
+  color: var(--text-primary);
+}
+
+button {
+  padding: 9px 18px;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+button:hover { filter: brightness(1.08); }
+button:active { transform: translateY(1px); }
+
+button.secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+button.secondary:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+  filter: none;
+}
+
+.icon-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+  filter: none;
+}
+
+.icon-btn-x {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn-x:hover {
+  background: var(--surface-raised);
+  color: var(--loss);
+}
+
+/* ---------- Table ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  text-align: left;
+  padding: 11px 14px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border);
+}
+
+th:not(:first-child), td:not(:first-child) { text-align: right; }
+
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+
+td:first-child {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.ticker-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.gain { color: var(--gain); }
+.loss { color: var(--loss); }
+
+/* ---------- Holdings + chart layout ---------- */
+
+.holdings-wrap {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.holdings-wrap table {
+  flex: 1;
+  min-width: 0;
+}
+
+.pie-wrap {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.pie-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+/* ---------- Summary line ---------- */
+
+.summary {
+  display: flex;
+  gap: 28px;
+  margin-top: 1.25rem;
+  padding: 1rem 0 0;
+}
+
+.summary-item .label {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+
+.summary-item .value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.summary-item .value.gain { color: var(--gain); }
+.summary-item .value.loss { color: var(--loss); }
+
+/* ---------- Layout helpers ---------- */
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.status-row p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---------- Empty state ---------- */
+
+.empty {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-style: italic;
+  padding: 1.5rem 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  body { padding: 2rem 1rem 3rem; }
+  form { flex-direction: column; align-items: stretch; }
+  table { font-size: 12px; }
+  th, td { padding: 9px 8px; }
+}
