@@ -308,6 +308,15 @@ tbody tr:hover { background: rgba(255,255,255,0.02); }
 .gain { color: var(--gain); }
 .loss { color: var(--loss); }
 
+@keyframes rowFlash {
+  0%   { background: rgba(255, 255, 255, 0.07); }
+  100% { background: transparent; }
+}
+
+.row-flash {
+  animation: rowFlash 0.8s ease-out forwards;
+}
+
 /* ---------- Holdings + chart layout ---------- */
 
 .holdings-wrap {
@@ -393,8 +402,48 @@ tbody tr:hover { background: rgba(255,255,255,0.02); }
 /* ---------- Responsive ---------- */
 
 @media (max-width: 640px) {
-  body { padding: 2rem 1rem 3rem; }
-  form { flex-direction: column; align-items: stretch; }
-  table { font-size: 12px; }
-  th, td { padding: 9px 8px; }
+  /* Fix 1: Prevent zoom on input tap (font-size must be >= 16px) */
+  input, button { font-size: 16px; }
+
+  body { padding: 1.5rem 0.75rem 3rem; }
+
+  /* Fix 2: Form stacks vertically, inputs don't overflow */
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Fix 2 + 3: Table and pie chart stack vertically instead of side by side */
+  .holdings-wrap {
+    flex-direction: column;
+  }
+
+  .pie-wrap {
+    width: 100%;
+  }
+
+  /* Fix 2: Table scrolls horizontally inside its container rather than
+     pushing the whole page out */
+  .holdings-wrap table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* Fix 4: Summary wraps into a 2x2 grid on mobile */
+  .summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0.75rem 0 0;
+  }
+
+  .summary-item {
+    min-width: 0;
+  }
+
+  .summary-item .value {
+    font-size: 1rem;
+  }
 }
